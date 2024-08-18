@@ -6,20 +6,20 @@ class Category:
     description: str
     __products: list
     categories_count = 0
-    all_quantity_products = 0
+    product_count = 0
 
     def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
         self.__products = products
         Category.categories_count += 1
-        Category.all_quantity_products += len(products)
+        Category.product_count += len(products)
 
     @property
     def products(self):
         product_str = ''
         for product in self.__products:
-            product_str += f"Product: {product.name}. Price: {product.price}. Quantity: {product.quantity}.\n"
+            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return product_str
 
     @property
@@ -29,5 +29,5 @@ class Category:
 
     def add_product(self, product: Product):
         self.__products.append(product)
-        Category.all_quantity_products += 1
+        Category.product_count += 1
 

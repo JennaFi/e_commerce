@@ -32,7 +32,7 @@ class Product:
             self.__price = new_price
 
     @classmethod
-    def new_product(cls, new_product, products_list):
+    def new_product(cls, new_product: dict, products_list: list):
         if products_list is None:
             return cls(**new_product)
         for product in products_list:
