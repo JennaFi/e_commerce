@@ -5,31 +5,60 @@ from src.product import Product
 
 
 @pytest.fixture
-def category_one():
+def category_one(product1, product2, product3):
     return Category(
-        name='Portatiles',
-        description='Office Equipment and Supplies',
-        products=[Product('Laptop Yoga', 'Processor 10', 780.90, 5),
-                Product('Laptop ASUS', 'Processor 25', 1090.90, 8),
-                Product('Laptop Lenovo', 'Processor 45', 2044.60, 15),
-                Product('Laptop HUAWEI', 'Processor 20', 1000.00, 7),
-                Product('MacBook', 'Processor 45', 2500.80, 15)
-                ]
-
+        name="Смартфоны",
+        description="""Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни""",
+        products=[product1, product2, product3],
     )
+
+
 @pytest.fixture
-def category_two():
-    return Category(
-        name='Moviles',
-        description='Smartphones',
-        products=[Product('iPhone', '15 MaxPro', 1100.20, 6),
-                  Product('Galaxy', '(90UI)', 800.20, 10),
-                  Product('Nokia', 'Sup890', 950.20, 8),
+def category_two(product4):
+    return Category(name="Телевизоры",
+        description="""Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником""",
+        products=[product4],
+)
 
-        ]
-
-    )
 @pytest.fixture
-def product():
-    return Product('Laptop Yoga', 'Processor 10', 780.90, 5)
+def product1():
+    return Product(name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера",
+                   price=180000.0, quantity=5)
 
+@pytest.fixture()
+def product2():
+    return Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
+
+@pytest.fixture
+def product3():
+    return Product(name="Xiaomi Redmi Note 11", description="1024GB, Синий", price=31000.0, quantity=14)
+
+@pytest.fixture
+def product4():
+    return Product(name='55" QLED 4K', description="Фоновая подсветка", price=123000.0, quantity=7)
+
+@pytest.fixture
+def products_by_category():
+    return [
+        {
+            "name": "Смартфоны",
+            "description": """Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни""",
+            "products": [
+                {
+                    "name": "Samsung Galaxy C23 Ultra",
+                    "description": "256GB, Серый цвет, 200MP камера",
+                    "price": 180000.0,
+                    "quantity": 5,
+                },
+                {"name": "Iphone 15", "description": "512GB, Gray space", "price": 210000.0, "quantity": 8},
+                {"name": "Xiaomi Redmi Note 11", "description": "1024GB, Синий", "price": 31000.0, "quantity": 14},
+            ],
+        },
+        {
+            "name": "Телевизоры",
+            "description": """Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником""",
+            "products": [
+                {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
+            ],
+        },
+    ]
