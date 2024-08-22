@@ -61,3 +61,6 @@ def test_new_product(product1, product2, product3, product4):
         }, [product1, product2, product3, product4])
     assert new_product.quantity == 10
     assert new_product.price == 180000.0
+
+def test_add_product(product1, product2):
+    assert product1 + product2 == 2580000.0

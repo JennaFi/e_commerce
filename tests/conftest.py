@@ -2,6 +2,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from src.product_iterator import ProductIterator
 
 
 @pytest.fixture
@@ -62,3 +63,7 @@ def products_by_category():
             ],
         },
     ]
+
+@pytest.fixture
+def product_iterator(category_one):
+    return ProductIterator(category_one)
