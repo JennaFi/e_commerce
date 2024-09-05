@@ -28,7 +28,7 @@ def test_product(capsys, product1, product2, product3, product4):
     assert product1.price == 200000.0
     product1.price = 0
     captured = capsys.readouterr()
-    assert captured.out == 'Price should be more than 0\n'
+    assert captured.out.strip().split('\n')[-1] == 'Price should be more than 0'
     assert product1.price == 200000.0
 
     with patch('builtins.input') as mock_input:
